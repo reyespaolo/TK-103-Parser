@@ -1,0 +1,30 @@
+{
+  "name": "tk-103-parser",
+  "version": "1.0.0",
+  "description": "Parser for TK-103 GPS Devices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reyespaolo/TK-103-Parser.git"
+  },
+  "keywords": [
+    "TK-103",
+    "Parser",
+    "GPS",
+    "Tracker",
+    "TK-103",
+    "tk103"
+  ],
+  "author": "Paolo Brainard M. Reyes <xreyes.paolox@gmail.com> (http://360logix.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyespaolo/TK-103-Parser/issues"
+  },
+  "homepage": "https://github.com/reyespaolo/TK-103-Parser#readme",
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
+}
