@@ -1,6 +1,5 @@
 'use strict';
 
-const pad = require('pad');
 const moment = require('moment');
 
 const getIndex = raw => {
