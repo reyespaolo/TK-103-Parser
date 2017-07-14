@@ -1,5 +1,6 @@
 'use strict';
 const config = require('./config.js');
+const moment = require('moment');
 
 const getIndex = raw => {
   for (var key in config.patterns) {
@@ -13,26 +14,11 @@ const getIndex = raw => {
 
 const parseTK103 = raw => {
   let parsedData = parse(raw);
-  let jsonResult = {
-    "alert" : null,
-    "latitude":null,
-    "longitude":null,
-    "speed":null,
-    "date":null,
-    "time":null,
-    "power":null,
-    "door":null,
-    "acc":null,
-    "lastlatitude":null,
-    "lastlongitude":null,
-    "mnc":null,
-    "mcc":null,
-    "timestampsent":null
-  };
-  let dataIndex = getIndex(parsedData);
+  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{
+    let dataIndex = getIndex(parsedData);
     for (var key in dataIndex) {
       if (dataIndex.hasOwnProperty(key)) {
           if(key === "alert"){
@@ -43,6 +29,7 @@ const parseTK103 = raw => {
       }
     }
   }
+  // if(jsonResult.date) jsonResult.date = moment(`${jsonResult.date}`, 'YY/MM/DD').toDate()
   return jsonResult;
 };
 
