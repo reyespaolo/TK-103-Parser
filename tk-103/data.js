@@ -11,6 +11,11 @@ const patterns = {
   sms_tk103_LAC2: /^Lac:(\w+),(\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\w+) Door:(\w+) ACC:(\w+)[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/
 };
 
+const dateFormat = {
+  sms_tk103_Alert: "yy/mm/dd",
+  sms_tk103_Alert_dir: "mm/dd/yy"
+}
+
 const mapIndex = {
   sms_tk103_Alert: {
       alert: 1,
@@ -104,4 +109,5 @@ module.exports = {
   patterns: patterns,
   mapIndex: mapIndex,
   parseAlarm:parseAlarm,
+  dateFormat:dateFormat
 };

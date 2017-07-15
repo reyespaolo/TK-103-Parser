@@ -1,6 +1,26 @@
 'use strict';
-const config = require('./config.js');
+const config = require('./data.js');
 const moment = require('moment');
+
+const dateParse = (date, format) => {
+  date = date.split("/");
+  format = format.split("/");
+  let year,month,day;
+
+  var result = "PAOLO"
+  for(var key in format){
+    if(format[key]==="yy"){
+      year ="20"+date[key]
+    }else if(format[key]==="mm"){
+      month = date[key]
+    }else if(format[key]==="dd"){
+      day = date[key]
+    }
+  }
+  var result = (`${year}-${month}-${day}`)
+  console.log(result)
+  return result;
+}
 
 const getIndex = raw => {
   for (var key in config.patterns) {
@@ -14,7 +34,7 @@ const getIndex = raw => {
 
 const parseTK103 = raw => {
   let parsedData = parse(raw);
-  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null};
+  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{
@@ -29,7 +49,7 @@ const parseTK103 = raw => {
       }
     }
   }
-  // if(jsonResult.date) jsonResult.date = moment(`${jsonResult.date}`, 'YY/MM/DD').toDate()
+  jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
   return jsonResult;
 };
 
