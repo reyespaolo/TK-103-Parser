@@ -3,26 +3,27 @@ const config = require('./data.js');
 const moment = require('moment');
 
 const dateParse = (date, format) => {
-  date = date.split("/");
-  format = format.split("/");
-  let year,month,day;
+  if(format!=undefined){
+    date = date.split("/");
+    format = format.split("/");
+    let year,month,day;
 
-  var result = "PAOLO"
-  for(var key in format){
-    if(format[key]==="yy"){
-      year ="20"+date[key]
-    }else if(format[key]==="mm"){
-      month = date[key]
-    }else if(format[key]==="dd"){
-      day = date[key]
+    for(var key in format){
+      if(format[key]==="yy"){
+        year ="20"+date[key]
+      }else if(format[key]==="mm"){
+        month = date[key]
+      }else if(format[key]==="dd"){
+        day = date[key]
+      }
     }
+    return (`${year}-${month}-${day}`);
   }
-  var result = (`${year}-${month}-${day}`)
-  console.log(result)
-  return result;
+
 }
 
 const getIndex = raw => {
+  console.log(raw)
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
       if(raw.protocol === key){
@@ -32,18 +33,23 @@ const getIndex = raw => {
   }
 };
 
-const parseTK103 = raw => {
+const parseTK103 = function(raw) {
   let parsedData = parse(raw);
+  // console.log(parsedData)
   let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{
+
     let dataIndex = getIndex(parsedData);
+    console.log(dataIndex)
     for (var key in dataIndex) {
+
       if (dataIndex.hasOwnProperty(key)) {
           if(key === "alert"){
             jsonResult[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
           }else{
+            console.log("test")
             jsonResult[key] = parsedData[dataIndex[key]];
           }
       }

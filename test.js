@@ -1,7 +1,6 @@
 'use strict';
 
 const tk103 = require('./tk-103');
-
 const smsgpsupdateraw = new Buffer('lat:14.632742\nlong:121.001790\nspeed:0.00\nT:17/06/05 16:21\nhttp://maps.google.com/maps?f=q&q=6.226433,125.075470&z=16\nPwr: ON Door: OFF ACC: OFF');
 const smsrawSpeedingAlert = new Buffer('speed!\nlat:-33.361133\nlong:124.771663\nspeed:463.00\nT:17/07/13 12:32\nhttp://maps.google.com/maps?f=q&q=6.424677,124.771663&z=16');
 const smsrawOilAlert = new Buffer('oil 24.32%!\nlat:-33.361133\nlong:124.771663\nspeed:463.00\nT:17/07/13 12:32\nhttp://maps.google.com/maps?f=q&q=6.424677,124.771663&z=16');
@@ -16,6 +15,7 @@ const smsrawACCOffAlert = new Buffer('ACC off!\nlat:14.223577\nlong:121.081497\n
 const smsrawACCOnAlert = new Buffer('acc on!\nlat:8.467303\nlong:121.081497\nspeed:0.00\nT:17/06/05 20:08\nhttp://maps.google.com/maps?f=q&q=8.467303,124.788797&z=16');
 const smsrawACCOnAlertDir = new Buffer('ACC on! lat:14.223577 long:121.081497 speed:0.00 dir:182\nT:05/06/17 23:54\nhttp://maps.google.com/maps?f=q&q=14.223577,121.081497&z=16');
 const smsrawACCAlert = new Buffer('ACC alarm!\nlat:14.324082\nlong:124.788797\nspeed:9.13\nT:17/06/05 16:35\nhttp://maps.google.com/maps?f=q&q=14.324082,121.027818&z=16');
+const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17/09/04 13:13\nhttp://maps.google.com/maps?f=q&q=14.836857,120.852707&z=16\nPwr: ON Door: OFF ACC: ON');
 
 // //
 // console.log(tk103.parseTK103(smsrawOilAlert));
@@ -31,8 +31,9 @@ const smsrawACCAlert = new Buffer('ACC alarm!\nlat:14.324082\nlong:124.788797\ns
 // console.log(tk103.parseTK103(smsrawACCOffAlert));
 // console.log(tk103.parseTK103(smsrawACCAlert));
 // console.log(tk103.parseTK103(smsrawACCOnAlert));
-console.log(tk103.parseTK103(smsrawACCOnAlertDir));
-console.log(tk103.parseTK103(smsrawACCOnAlert));
+
+console.log(tk103.parseTK103(smsrawTest));
+// console.log(tk103.parseTK103(smsgpsupdateraw));
 
 
 // acc on!

@@ -1,8 +1,8 @@
 {
   "name": "tk-103-parser",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Parser for TK-103 GPS Devices",
-  "main": "index.js",
+  "main": "tk-103/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
