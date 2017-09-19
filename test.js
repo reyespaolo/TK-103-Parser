@@ -32,8 +32,8 @@ const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17
 // console.log(tk103.parseTK103(smsrawACCAlert));
 // console.log(tk103.parseTK103(smsrawACCOnAlert));
 
-console.log(tk103.parseTK103(smsrawTest));
-// console.log(tk103.parseTK103(smsgpsupdateraw));
+// console.log(tk103.parseTK103(smsrawTest));
+console.log(tk103.parseTK103(smsgpsupdateraw));
 
 
 // acc on!

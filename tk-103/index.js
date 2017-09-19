@@ -23,7 +23,6 @@ const dateParse = (date, format) => {
 }
 
 const getIndex = raw => {
-  console.log(raw)
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
       if(raw.protocol === key){
@@ -35,27 +34,27 @@ const getIndex = raw => {
 
 const parseTK103 = function(raw) {
   let parsedData = parse(raw);
-  // console.log(parsedData)
-  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null};
+  let jsonResult = {"parsedData": {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null}};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{
 
     let dataIndex = getIndex(parsedData);
-    console.log(dataIndex)
     for (var key in dataIndex) {
-
       if (dataIndex.hasOwnProperty(key)) {
           if(key === "alert"){
-            jsonResult[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
+            jsonResult.parsedData[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
+            jsonResult.status = "Success";
+
           }else{
-            console.log("test")
-            jsonResult[key] = parsedData[dataIndex[key]];
+            jsonResult.parsedData[key] = parsedData[dataIndex[key]];
+            jsonResult.status = "Success";
+
           }
       }
     }
   }
-  jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
+  jsonResult.parsedData["parsedDate"] = dateParse(jsonResult.parsedData["date"], config.dateFormat[parsedData.protocol])
   return jsonResult;
 };
 
@@ -66,6 +65,7 @@ const parse = raw => {
       if(config.patterns[key].test(raw)){
           result = config.patterns[key].exec(raw);
           result.protocol = key;
+
       }
     }
   }
