@@ -34,7 +34,7 @@ const getIndex = raw => {
 
 const parseTK103 = function(raw) {
   let parsedData = parse(raw);
-  let jsonResult = {"parsedData": {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null}};
+  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{
@@ -43,18 +43,18 @@ const parseTK103 = function(raw) {
     for (var key in dataIndex) {
       if (dataIndex.hasOwnProperty(key)) {
           if(key === "alert"){
-            jsonResult.parsedData[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
+            jsonResult[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
             jsonResult.status = "Success";
 
           }else{
-            jsonResult.parsedData[key] = parsedData[dataIndex[key]];
+            jsonResult[key] = parsedData[dataIndex[key]];
             jsonResult.status = "Success";
 
           }
       }
     }
   }
-  jsonResult.parsedData["parsedDate"] = dateParse(jsonResult.parsedData["date"], config.dateFormat[parsedData.protocol])
+  // jsonResult.parsedData["parsedDate"] = dateParse(jsonResult.parsedData["date"], config.dateFormat[parsedData.protocol])
   return jsonResult;
 };
 
