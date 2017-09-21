@@ -3,7 +3,7 @@ const config = require('./data.js');
 const moment = require('moment');
 
 const dateParse = (date, format) => {
-  if(format!=undefined){
+  if(format!==undefined&&date!==undefined){
     date = date.split("/");
     format = format.split("/");
     let year,month,day;
