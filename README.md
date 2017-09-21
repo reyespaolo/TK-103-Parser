@@ -9,8 +9,11 @@ A parser for TK-103A and TK-103B GPS Tracker Protocol.
 import tk103 from 'tk-103-parser';
 
 const test = new Buffer('lat:14.632742\nlong:121.001790\nspeed:0.00\nT:17/06/05 16:21\nhttp://maps.google.com/maps?f=q&q=6.226433,125.075470&z=16\nPwr: ON Door: OFF ACC: OFF')
+const smsrawSOSAlert = new Buffer('help me!\nlat:6.319640\nlong:124.975628\nspeed:0.00\nT:17/06/05 16:42\nhttp://maps.google.com/maps?f=q&q=6.319640,124.975628&z=16');
+
 
 console.log(tk103.parseTK103(test));
+console.log(tk103.parseTK103(smsrawSOSAlert));
 
 ```
 
@@ -40,6 +43,29 @@ console.log(tk103.parseTK103(test));
   vehicleBattery: null,
   status: 'Success'
 }
+
+{ alert: 'SOSAlert',
+
+  latitude: '6.319640',
+  longitude: '124.975628',
+  speed: '0.00',
+  date: '17/06/05',
+  parsedDate: '2017-06-05',
+  dateTime: [Function: Date],
+  time: '16:42',
+  power: null,
+  door: null,
+  acc: null,
+  lastlatitude: null,
+  lastlongitude: null,
+  mnc: null,
+  mcc: null,
+  timestampsent: null,
+  direction: null,
+  GPSPosition: null,
+  GPSSIgnal: null,
+  vehicleBattery: null,
+  status: 'Success' }
 ```
 
 ## SMS Protocol Format
