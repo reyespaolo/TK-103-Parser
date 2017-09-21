@@ -55,7 +55,9 @@ const parseTK103 = function(raw) {
     }
   }
   // console.log(jsonResult)
-  jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
+  if(jsonResult["date"] !== null){
+    jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
+  }
   return jsonResult;
 };
 
@@ -66,11 +68,11 @@ const parse = raw => {
       if(config.patterns[key].test(raw)){
           result = config.patterns[key].exec(raw);
           result.protocol = key;
-
+          return result;
       }
     }
   }
-  return result;
+  return result
 };
 
 module.exports = {

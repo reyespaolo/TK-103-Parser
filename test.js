@@ -16,7 +16,7 @@ const smsrawACCOnAlert = new Buffer('acc on!\nlat:8.467303\nlong:121.081497\nspe
 const smsrawACCOnAlertDir = new Buffer('ACC on! lat:14.223577 long:121.081497 speed:0.00 dir:182\nT:05/06/17 23:54\nhttp://maps.google.com/maps?f=q&q=14.223577,121.081497&z=16');
 const smsrawACCAlert = new Buffer('ACC alarm!\nlat:14.324082\nlong:124.788797\nspeed:9.13\nT:17/06/05 16:35\nhttp://maps.google.com/maps?f=q&q=14.324082,121.027818&z=16');
 const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17/09/04 13:13\nhttp://maps.google.com/maps?f=q&q=14.836857,120.852707&z=16\nPwr: ON Door: OFF ACC: ON');
-const test = new Buffer('Power alarm!\nLac:c7a2 7a48\nT:\nLast:\nT:00:00\nhttp://maps.google.com/maps?f=q&q=6.119503,125.161515&z=16')
+const test = new Buffer('speed!\nlat:6.255437\nlong:125.073230\nspeed:50.19 \nT:17/09/21 12:59\nhttp://maps.google.com/maps?f=q&q=6.255437,125.073230&z=16')
 
 console.log(tk103.parseTK103(test));
 // //
