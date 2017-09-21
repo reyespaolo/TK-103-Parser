@@ -14,7 +14,10 @@ const patterns = {
   sms_tk103_SOSLAC: /^(help me!)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
   sms_tk103_LAC: /^Lac:(\w+) (\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]Last:\nT:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
   sms_tk103_LAC1: /^Lac:(\w+) (\w+)[\r|\n|\ ]T:[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
-  sms_tk103_LAC2: /^Lac:(\w+),(\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\w+) Door:(\w+) ACC:(\w+)[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/
+  sms_tk103_LAC2: /^Lac:(\w+),(\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\w+) Door:(\w+) ACC:(\w+)[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
+  sms_tk103_LAC3: /^lat:long:speed:Lac:(\w+) (\w+)[\r|\n|\ ]/,
+  sms_alert_LAC: /^(acc on!|Acc on!|ACC ON!|Acc On!|acc off!|Acc off!|ACC OFF!|Acc Off!|Power alarm!)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
+
 };
 
 const dateFormat = {
@@ -29,6 +32,18 @@ const dateFormat = {
 }
 
 const mapIndex = {
+  sms_alert_LAC:{
+    alert: 1,
+    mnc: 2,
+    mcc: 3,
+    time: 4,
+    lastlatitude: 5,
+    lastlongitude: 6
+  },
+  sms_tk103_LAC3:{
+    mnc: 1,
+    mcc: 2,
+  },
   sms_tk103BDir:{
     latitude: 1,
     longitude: 2,
@@ -134,6 +149,8 @@ const parseAlarm = event => {
     'ACC off!': {AlertType: 'DoorAlert'},
     'ACC on!': {AlertType: 'ACCOn'},
     'acc on!': {AlertType: 'ACCOn'},
+    'Power alarm!': {AlertType: 'PowerAlarm'},
+
   };
   return event in alarms ? alarms[event] : null;
 };
