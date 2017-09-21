@@ -5,9 +5,10 @@ const patterns = {
 // lat:14.610658 long:121.089297 speed:0.00 dir:323\nT:21/09/17 08:21\nPWR:ON Door:OFF ACC:OFF\nhttp://maps.google.com/maps?f=q&q=14.610658,121.089297&z=16'
   sms_tk103: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ](http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=[-]?\d+\.\d+,[-]?\d+\.\d+\&z=16)[\r|\n|\ ]Pwr:[\r|\n|\ ](\w+) Door:[\r|\n|\ ](\w+) ACC:[\r|\n|\ ](\w+)/,
   sms_tk103B: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+) [\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ](http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=[-]?\d+\.\d+,[-]?\d+\.\d+\&z=16)[\r|\n|\ ]Pwr:[\r|\n|\ ](\w+) Door:[\r|\n|\ ](\w+) ACC:[\r|\n|\ ](\w+)/,
+
   sms_tk103BDir: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)/,
 
-  sms_tk103_Alert: /^(Power alarm!|speed!|help me!|Door alarm!|ACC alarm!|ACC off!|acc off|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
+  sms_tk103_Alert: /^(Power alarm!|speed!|help me!|Door alarm!|ACC alarm!|ACC off!|acc off!|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\s]|[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
   sms_tk103_Alert_dir: /^(speed!|help me!|Door alarm!|ACC alarm!|ACC off!|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
   sms_tk103_Oil: /^(oil) (\d+\.\d+)%![\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
   sms_tk103_SOSLAC: /^(help me!)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
