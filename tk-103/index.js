@@ -54,7 +54,8 @@ const parseTK103 = function(raw) {
       }
     }
   }
-  // jsonResult.parsedData["parsedDate"] = dateParse(jsonResult.parsedData["date"], config.dateFormat[parsedData.protocol])
+  // console.log(jsonResult)
+  jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
   return jsonResult;
 };
 
