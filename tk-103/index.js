@@ -34,7 +34,7 @@ const getIndex = raw => {
 
 const parseTK103 = function(raw) {
   let parsedData = parse(raw);
-  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"mnc":null,"mcc":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null};
+  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"lac":null,"cid":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null};
   if(parsedData.status == "Failed"){
     jsonResult = parsedData;
   }else{

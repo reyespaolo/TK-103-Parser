@@ -46,8 +46,8 @@ const dateFormat = {
 const mapIndex = {
   sms_tk103_Alert_ACCON: {
     alert: 1,
-    mnc: 2,
-    mcc: 3,
+    lac: 2,
+    cid: 3,
     date: 4,
     time: 5,
     lastTime: 6,
@@ -56,15 +56,15 @@ const mapIndex = {
   },
   sms_alert_LAC:{
     alert: 1,
-    mnc: 2,
-    mcc: 3,
+    lac: 2,
+    cid: 3,
     time: 4,
     lastlatitude: 5,
     lastlongitude: 6
   },
   sms_tk103_LAC3:{
-    mnc: 1,
-    mcc: 2,
+    lac: 1,
+    cid: 2,
   },
   sms_tk103A:{
     latitude: 1,
@@ -186,15 +186,15 @@ const mapIndex = {
   },
   sms_tk103_SOSLAC: {
     alert: 1,
-    mnc: 2,
-    mcc: 3,
+    lac: 2,
+    cid: 3,
     lasttime:4,
     lastlatitude: 5,
     lastlongitude: 6
   },
   sms_tk103_LAC: {
-    mnc: 1,
-    mcc: 2,
+    lac: 1,
+    cid: 2,
     date: 3,
     time: 4,
     lasttime: 5,
@@ -202,15 +202,15 @@ const mapIndex = {
     lastlongitude: 7,
   },
   sms_tk103_LAC1: {
-    mnc: 1,
-    mcc: 2,
+    lac: 1,
+    cid: 2,
     lasttime: 3,
     lastlatitude: 4,
     lastlongitude: 5,
   },
   sms_tk103_LAC2: {
-    mnc: 1,
-    mcc: 2,
+    lac: 1,
+    cid: 2,
     date: 3,
     time: 4,
     power: 5,
@@ -220,8 +220,8 @@ const mapIndex = {
     lastlongitude: 9,
   },
   sms_tk103_LAC4:{
-    mnc: 1,
-    mcc: 2,
+    lac: 1,
+    cid: 2,
     date: 3,
     time: 4,
     power: 5,

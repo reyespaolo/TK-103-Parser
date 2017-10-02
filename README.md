@@ -44,8 +44,8 @@ console.log(tk103.parseTK103(smsrawSOSAlert));
   status: 'Success'
 }
 
-{ alert: 'SOSAlert',
-
+{
+  alert: 'SOSAlert',
   latitude: '6.319640',
   longitude: '124.975628',
   speed: '0.00',
