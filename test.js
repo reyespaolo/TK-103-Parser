@@ -18,8 +18,9 @@ const smsrawACCAlert = new Buffer('ACC alarm!\nlat:14.324082\nlong:124.788797\ns
 const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17/09/04 13:13\nhttp://maps.google.com/maps?f=q&q=14.836857,120.852707&z=16\nPwr: ON Door: OFF ACC: ON');
 const test = new Buffer('lat:14.632742\nlong:121.001790\nspeed:0.00\nT:17/06/05 16:21\nhttp://maps.google.com/maps?f=q&q=6.226433,125.075470&z=16\nPwr: ON Door: OFF ACC: OFF')
 
-console.log(tk103.parseTK103(test));
-console.log(tk103.parseTK103(smsrawSOSAlert));
+// console.log(tk103.parseTK103(test));
+// console.log(tk103.parseTK103(smsrawSOSAlert));
+console.log(tk103.parseTK103(smsrawLAC2));
 
 // //
 // console.log(tk103.parseTK103(smsrawOilAlert));
