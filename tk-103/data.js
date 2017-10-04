@@ -1,7 +1,6 @@
-'use strict';
+'use strict'
 
 const patterns = {
-
   sms_tk103_Alert: /^(low battery!|Power alarm!|speed!|help me!|Door alarm!|ACC alarm!|ACC off!|acc off!|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
   sms_tk103_Alert_1: /^(low battery!|Power alarm!|speed!|help me!|Door alarm!|ACC alarm!|ACC off!|acc off!|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+) [\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
   sms_tk103_Alert_dir: /^(speed!|help me!|Door alarm!|ACC alarm!|ACC off!|ACC on!|acc on!)[\r|\n|\ ]lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})/,
@@ -22,25 +21,24 @@ const patterns = {
   sms_tk103BDir_2: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+) speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
   sms_tk103BDir_3: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+) speed:(\d+\.\d+)[\r|\n|\ ]dir:(.*)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
   sms_tk103_Alert_ACCON: /^(acc on!|Acc On)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
-
-};
+}
 
 const dateFormat = {
   sms_tk103_Alert: "yy/mm/dd",
   sms_tk103_Alert_1: "yy/mm/dd",
   sms_tk103_Alert_dir: "mm/dd/yy",
   sms_tk103BDir: "dd/mm/yy",
-  sms_tk103:"yy/mm/dd",
-  sms_tk103_Oil:"yy/mm/dd",
-  sms_tk103_LAC:"yy/mm/dd",
-  sms_tk103_LAC1:"yy/mm/dd",
-  sms_tk103_LAC2:"yy/mm/dd",
-  sms_tk103_Oil_1:"yy/mm/dd",
-  sms_tk103BDir_1:"dd/mm/yy",
-  sms_tk103_LAC4:"dd/mm/yy",
-  sms_tk103BDir_2:"dd/mm/yy",
-  sms_tk103BDir_3:"dd/mm/yy",
-  sms_tk103_Alert_ACCON:"yy/mm/dd"
+  sms_tk103: "yy/mm/dd",
+  sms_tk103_Oil: "yy/mm/dd",
+  sms_tk103_LAC: "yy/mm/dd",
+  sms_tk103_LAC1: "yy/mm/dd",
+  sms_tk103_LAC2: "yy/mm/dd",
+  sms_tk103_Oil_1: "yy/mm/dd",
+  sms_tk103BDir_1: "dd/mm/yy",
+  sms_tk103_LAC4: "dd/mm/yy",
+  sms_tk103BDir_2: "dd/mm/yy",
+  sms_tk103BDir_3: "dd/mm/yy",
+  sms_tk103_Alert_ACCON: "yy/mm/dd"
 }
 
 const mapIndex = {
@@ -54,7 +52,7 @@ const mapIndex = {
     lastLatitude: 7,
     lastLongitude: 8
   },
-  sms_alert_LAC:{
+  sms_alert_LAC: {
     alert: 1,
     lac: 2,
     cid: 3,
@@ -62,19 +60,19 @@ const mapIndex = {
     lastlatitude: 5,
     lastlongitude: 6
   },
-  sms_tk103_LAC3:{
+  sms_tk103_LAC3: {
     lac: 1,
     cid: 2,
   },
-  sms_tk103A:{
+  sms_tk103A: {
     latitude: 1,
     longitude: 2,
-      speed: 3,
-      date: 5,
-      time: 6,
-      power: 7,
-      door: 8,
-      acc: 9
+    speed: 3,
+    date: 5,
+    time: 6,
+    power: 7,
+    door: 8,
+    acc: 9
   },
   sms_tk103BDir_1: {
     latitude: 1,
@@ -87,7 +85,7 @@ const mapIndex = {
     door: 8,
     acc: 9
   },
-  sms_tk103BDir:{
+  sms_tk103BDir: {
     latitude: 1,
     longitude: 2,
     speed: 3,
@@ -99,7 +97,7 @@ const mapIndex = {
     acc: 9
 
   },
-  sms_tk103BDir_2:{
+  sms_tk103BDir_2: {
     latitude: 1,
     longitude: 2,
     speed: 3,
@@ -110,7 +108,7 @@ const mapIndex = {
     door: 8,
     acc: 9
   },
-  sms_tk103BDir_3:{
+  sms_tk103BDir_3: {
     latitude: 1,
     longitude: 2,
     speed: 3,
@@ -122,20 +120,20 @@ const mapIndex = {
     acc: 9
   },
   sms_tk103_Alert: {
-      alert: 1,
-      latitude: 2,
-      longitude: 3,
-      speed: 4,
-      date: 5,
-      time: 6
+    alert: 1,
+    latitude: 2,
+    longitude: 3,
+    speed: 4,
+    date: 5,
+    time: 6
   },
   sms_tk103_Alert_1: {
-      alert: 1,
-      latitude: 2,
-      longitude: 3,
-      speed: 4,
-      date: 5,
-      time: 6
+    alert: 1,
+    latitude: 2,
+    longitude: 3,
+    speed: 4,
+    date: 5,
+    time: 6
   },
   sms_tk103_Alert_dir: {
     alert: 1,
@@ -188,7 +186,7 @@ const mapIndex = {
     alert: 1,
     lac: 2,
     cid: 3,
-    lastTime:4,
+    lastTime: 4,
     lastLatitude: 5,
     lastLongitude: 6
   },
@@ -219,7 +217,7 @@ const mapIndex = {
     lastLatitude: 8,
     lastLongitude: 9,
   },
-  sms_tk103_LAC4:{
+  sms_tk103_LAC4: {
     lac: 1,
     cid: 2,
     date: 3,
@@ -230,30 +228,52 @@ const mapIndex = {
     lastLatitude: 8,
     lastLongitude: 9,
   }
-};
+}
 
 const parseAlarm = event => {
   const alarms = {
-    'speed!': {AlertType: 'SpeedingAlert'},
-    'oil': {AlertType: 'OilAlert'},
-    'help me!': {AlertType: 'SOSAlert'},
-    'Door alarm!': {AlertType: 'DoorAlert'},
-    'ACC alarm!': {AlertType: 'ACCAlarm'},
-    'ACC off!': {AlertType: 'ACCOff'},
-    'ACC on!': {AlertType: 'ACCOn'},
-    'acc on!': {AlertType: 'ACCOn'},
-    'acc off!': {AlertType: 'ACCOff'},
-    'Power alarm!': {AlertType: 'PowerAlarm'},
-    'low battery!': {AlertType: 'LowBattery'}
+    'speed!': {
+      AlertType: 'SpeedingAlert'
+    },
+    'oil': {
+      AlertType: 'OilAlert'
+    },
+    'help me!': {
+      AlertType: 'SOSAlert'
+    },
+    'Door alarm!': {
+      AlertType: 'DoorAlert'
+    },
+    'ACC alarm!': {
+      AlertType: 'ACCAlarm'
+    },
+    'ACC off!': {
+      AlertType: 'ACCOff'
+    },
+    'ACC on!': {
+      AlertType: 'ACCOn'
+    },
+    'acc on!': {
+      AlertType: 'ACCOn'
+    },
+    'acc off!': {
+      AlertType: 'ACCOff'
+    },
+    'Power alarm!': {
+      AlertType: 'PowerAlarm'
+    },
+    'low battery!': {
+      AlertType: 'LowBattery'
+    }
 
-  };
-  return event in alarms ? alarms[event] : null;
-};
+  }
+  return event in alarms ? alarms[event] : null
+}
 
 
 module.exports = {
   patterns: patterns,
   mapIndex: mapIndex,
-  parseAlarm:parseAlarm,
-  dateFormat:dateFormat
-};
+  parseAlarm: parseAlarm,
+  dateFormat: dateFormat
+}
