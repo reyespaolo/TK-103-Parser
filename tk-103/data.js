@@ -188,25 +188,25 @@ const mapIndex = {
     alert: 1,
     lac: 2,
     cid: 3,
-    lasttime:4,
-    lastlatitude: 5,
-    lastlongitude: 6
+    lastTime:4,
+    lastLatitude: 5,
+    lastLongitude: 6
   },
   sms_tk103_LAC: {
     lac: 1,
     cid: 2,
     date: 3,
     time: 4,
-    lasttime: 5,
-    lastlatitude: 6,
-    lastlongitude: 7,
+    lastTime: 5,
+    lastLatitude: 6,
+    lastLongitude: 7,
   },
   sms_tk103_LAC1: {
     lac: 1,
     cid: 2,
-    lasttime: 3,
-    lastlatitude: 4,
-    lastlongitude: 5,
+    lastTime: 3,
+    lastLatitude: 4,
+    lastLongitude: 5,
   },
   sms_tk103_LAC2: {
     lac: 1,
@@ -216,8 +216,8 @@ const mapIndex = {
     power: 5,
     door: 6,
     acc: 7,
-    lastlatitude: 8,
-    lastlongitude: 9,
+    lastLatitude: 8,
+    lastLongitude: 9,
   },
   sms_tk103_LAC4:{
     lac: 1,
@@ -227,8 +227,8 @@ const mapIndex = {
     power: 5,
     door: 6,
     acc: 7,
-    lastlatitude: 8,
-    lastlongitude: 9,
+    lastLatitude: 8,
+    lastLongitude: 9,
   }
 };
 
