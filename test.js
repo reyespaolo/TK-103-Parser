@@ -19,7 +19,8 @@ const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17
 const test = new Buffer('lat:14.632742\nlong:121.001790\nspeed:0.00\nT:17/06/05 16:21\nhttp://maps.google.com/maps?f=q&q=6.226433,125.075470&z=16\nPwr: ON Door: OFF ACC: OFF')
 const err1 = new Buffer('Lac:c7da f0e2\nT:17/10/06 12:53\nLast:\nT:10:08\nhttp://maps.google.com/maps?f=q&q=7.733318,125.048503&z=16')
 const err2 = new Buffer('lat:long:speed:Lac:3778 3d9a\nT:17/10/06 13:49\nhttp://maps.google.com/maps?f=q&q=,&z=16')
-const oil = new Buffer(`lat:7.152070\nlong:125.659558\nspeed:0.00\nT:18/03/09 18:14\nhttp://maps.google.com/maps?f=q&q=7.152070,125.659558&z=16\nPwr: ON Door: OFF ACC: ON\noil: 40.16%`)
+const oil = new Buffer(`lat:7.150260\nlong:125.658705\nspeed:0.00\nT:18/03/09 18:14\nhttp://maps.google.com/maps?f=q&q=7.150260,125.658705&z=16\nPwr: ON Door: OFF ACC: OFF\noil: 40.15%
+`)
 
 // tk103.parseTK103(test)
 // tk103.parseTK103(smsrawSOSAlert)
