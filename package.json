@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/reyespaolo/TK-103-Parser#readme",
   "dependencies": {
-    "moment": "^2.15.1"
+    "moment": "^2.18.1"
   }
 }

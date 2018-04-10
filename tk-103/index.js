@@ -1,23 +1,24 @@
-'use strict';
-const config = require('./data.js');
-const moment = require('moment');
+'use strict'
+
+const config = require('./data.js')
+const moment = require('moment')
 
 const dateParse = (date, format) => {
-  if(format!==undefined&&date!==undefined){
-    date = date.split("/");
-    format = format.split("/");
-    let year,month,day;
+  if (format && date) {
+    date = date.split('/')
+    format = format.split('/')
+    let year, month, day
 
-    for(var key in format){
-      if(format[key]==="yy"){
-        year ="20"+date[key]
-      }else if(format[key]==="mm"){
+    for (var key in format) {
+      if (format[key] === 'yy') {
+        year = '20' + date[key]
+      } else if (format[key] === 'mm') {
         month = date[key]
-      }else if(format[key]==="dd"){
+      } else if (format[key] === 'dd') {
         day = date[key]
       }
     }
-    return (`${year}-${month}-${day}`);
+    return (`${year}-${month}-${day}`)
   }
 
 }
@@ -25,57 +26,85 @@ const dateParse = (date, format) => {
 const getIndex = raw => {
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
-      if(raw.protocol === key){
-        return config.mapIndex[key];
+      if (raw.protocol === key) {
+        return config.mapIndex[key]
       }
     }
   }
-};
+}
 
-const parseTK103 = function(raw) {
-  let parsedData = parse(raw);
-  let jsonResult = {"alert" : null,"latitude":null,"longitude":null,"speed":null,"date":null,"parsedDate": Date,"dateTime":Date,"time":null,"power":null,"door":null,"acc":null,"lastlatitude":null,"lastlongitude":null,"lac":null,"cid":null,"timestampsent":null,"direction":null,"GPSPosition":null, "GPSSIgnal":null, "vehicleBattery":null};
-  if(parsedData.status == "Failed"){
-    jsonResult = parsedData;
-  }else{
+const parseTK103 = raw => {
+  let parsedData = parse(raw)
+  let jsonResult = {
+    'alert': undefined,
+    'latitude': undefined,
+    'longitude': undefined,
+    'speed': undefined,
+    'date': undefined,
+    'parsedDate': undefined,
+    'dateTime': undefined,
+    'time': undefined,
+    'power': undefined,
+    'door': undefined,
+    'acc': undefined,
+    'lastLatitude': undefined,
+    'lastLongitude': undefined,
+    'lac': undefined,
+    'cid': undefined,
+    'timestampsent': undefined,
+    'direction': undefined,
+    'GPSPosition': undefined,
+    'GPSSignal': undefined,
+    'vehicleBattery': undefined
+  }
+  if (parsedData.status == 'Failed') {
+    jsonResult = parsedData
+  } else {
 
-    let dataIndex = getIndex(parsedData);
+    let dataIndex = getIndex(parsedData)
     for (var key in dataIndex) {
       if (dataIndex.hasOwnProperty(key)) {
-          if(key === "alert"){
-            jsonResult[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType;
-            jsonResult.status = "Success";
-
-          }else{
-            jsonResult[key] = parsedData[dataIndex[key]];
-            jsonResult.status = "Success";
-
-          }
+        if (key === 'alert') {
+          jsonResult[key] = config.parseAlarm(parsedData[dataIndex[key]]).AlertType
+          jsonResult.status = 'Success'
+        } else {
+          jsonResult[key] = parsedData[dataIndex[key]]
+          jsonResult.status = 'Success'
+        }
+        jsonResult.protocol = parsedData.protocol
       }
     }
   }
   // console.log(jsonResult)
-  if(jsonResult["date"] !== null){
-    jsonResult["parsedDate"] = dateParse(jsonResult["date"], config.dateFormat[parsedData.protocol])
+  if (jsonResult['date'] && jsonResult['time']) {
+    jsonResult['parsedDate'] = dateParse(jsonResult['date'], config.dateFormat[parsedData.protocol]) || `${20+jsonResult['date']}` + ` ${jsonResult['time']}`
+    // jsonResult['dateTime'] = new Date(jsonResult['parsedDate'])
+  } else {
+    // jsonResult['dateTime'] = null
   }
-  return jsonResult;
-};
+  // console.log(jsonResult.dateTime, jsonResult, raw.toString())
+  return jsonResult
+}
 
 const parse = raw => {
-  let result = {status: 'Failed', message: 'UnknownProtocol', raw: raw.toString()};
+  let result = {
+    status: 'Failed',
+    message: 'UnknownProtocol',
+    raw: raw.toString()
+  }
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
-      if(config.patterns[key].test(raw)){
-          result = config.patterns[key].exec(raw);
-          result.protocol = key;
-          return result;
+      if (config.patterns[key].test(raw)) {
+        result = config.patterns[key].exec(raw)
+        result.protocol = key
+        return result
       }
     }
   }
   return result
-};
+}
 
 module.exports = {
   parse: parse,
   parseTK103: parseTK103
-};
+}
