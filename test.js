@@ -17,25 +17,31 @@ const smsrawACCOnAlertDir = new Buffer('ACC on! lat:14.223577 long:121.081497 sp
 const smsrawACCAlert = new Buffer('ACC alarm!\nlat:14.324082\nlong:124.788797\nspeed:9.13\nT:17/06/05 16:35\nhttp://maps.google.com/maps?f=q&q=14.324082,121.027818&z=16');
 const smsrawTest = new Buffer('lat:14.836857\nlong:120.852707\nspeed:0.00 \nT:17/09/04 13:13\nhttp://maps.google.com/maps?f=q&q=14.836857,120.852707&z=16\nPwr: ON Door: OFF ACC: ON');
 const test = new Buffer('lat:14.632742\nlong:121.001790\nspeed:0.00\nT:17/06/05 16:21\nhttp://maps.google.com/maps?f=q&q=6.226433,125.075470&z=16\nPwr: ON Door: OFF ACC: OFF')
+const err1 = new Buffer('Lac:c7da f0e2\nT:17/10/06 12:53\nLast:\nT:10:08\nhttp://maps.google.com/maps?f=q&q=7.733318,125.048503&z=16')
+const err2 = new Buffer('lat:long:speed:Lac:3778 3d9a\nT:17/10/06 13:49\nhttp://maps.google.com/maps?f=q&q=,&z=16')
+const oil = new Buffer(`lat:7.152070\nlong:125.659558\nspeed:0.00\nT:18/03/09 18:14\nhttp://maps.google.com/maps?f=q&q=7.152070,125.659558&z=16\nPwr: ON Door: OFF ACC: ON\noil: 40.16%`)
 
-// console.log(tk103.parseTK103(test));
-// console.log(tk103.parseTK103(smsrawSOSAlert));
-console.log(tk103.parseTK103(smsrawLAC2));
+// tk103.parseTK103(test)
+// tk103.parseTK103(smsrawSOSAlert)
+// tk103.parseTK103(err1)
+// tk103.parseTK103(err2)
+tk103.parseTK103(oil)
+
 
 // //
-// console.log(tk103.parseTK103(smsrawOilAlert));
-// console.log(tk103.parseTK103(smsrawSpeedingAlert));
-// console.log(tk103.parseTK103(smsgpsupdateraw));
-// console.log(tk103.parseTK103(smsrawSOSAlert));
-// console.log(tk103.parseTK103(smsrawSOSAlertLAC));
-// console.log(tk103.parseTK103(smsrawLAC));
-// console.log(tk103.parseTK103(smsrawLAC1));
-// console.log(tk103.parseTK103(smsrawLAC2));
-// console.log(tk103.parseTK103(smsrawDoorAlert));
-// console.log(tk103.parseTK103(smsrawACCOffAlertDir));
-// console.log(tk103.parseTK103(smsrawACCOffAlert));
-// console.log(tk103.parseTK103(smsrawACCAlert));
-// console.log(tk103.parseTK103(smsrawACCOnAlert));
+// tk103.parseTK103(smsrawOilAlert)
+// tk103.parseTK103(smsrawSpeedingAlert)
+// tk103.parseTK103(smsgpsupdateraw)
+// tk103.parseTK103(smsrawSOSAlert)
+// tk103.parseTK103(smsrawSOSAlertLAC)
+// tk103.parseTK103(smsrawLAC)
+// tk103.parseTK103(smsrawLAC1)
+// tk103.parseTK103(smsrawLAC2)
+// tk103.parseTK103(smsrawDoorAlert)
+// tk103.parseTK103(smsrawACCOffAlertDir)
+// tk103.parseTK103(smsrawACCOffAlert)
+// tk103.parseTK103(smsrawACCAlert)
+// tk103.parseTK103(smsrawACCOnAlert)
 
 // console.log(tk103.parseTK103(smsrawTest));
 
