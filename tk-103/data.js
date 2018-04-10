@@ -12,7 +12,6 @@ const patterns = {
   sms_tk103_LAC2: /^Lac:(\w+),(\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\w+) Door:(\w+) ACC:(\w+)[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
   sms_tk103_LAC3: /^lat:long:speed:Lac:(\w+) (\w+)[\r|\n|\ ]/,
   sms_tk103_LAC4: /^Lac:(\w+),(\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\w+) Door:(\w+) ACC:(\w+)/,
-  sms_tk103_LAC5: /^Lac:(\w+) (\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
   sms_alert_LAC: /^(ACC alarm!|acc on!|Acc on!|ACC ON!|Acc On!|acc off!|Acc off!|ACC OFF!|Acc Off!|Power alarm!)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
   sms_tk103A_Oil: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ](https?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=[-]?\d+\.\d+,[-]?\d+\.\d+\&z=16)[\r|\n|\ ]Pwr:[\r|\n|\ ](\w+) Door:[\r|\n|\ ](\w+) ACC:[\r|\n|\ ](\w+)[\r|\n|\ ]oil:[\r|\n|\ ](\d+\.\d+)%/,
   sms_tk103A: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ](https?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=[-]?\d+\.\d+,[-]?\d+\.\d+\&z=16)[\r|\n|\ ]Pwr:[\r|\n|\ ](\w+) Door:[\r|\n|\ ](\w+) ACC:[\r|\n|\ ](\w+)/,
@@ -22,27 +21,25 @@ const patterns = {
   sms_tk103BDir_1: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n|\ ]speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+).[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
   sms_tk103BDir_2: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+) speed:(\d+\.\d+)[\r|\n|\ ]dir:(\d+.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
   sms_tk103BDir_3: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+) speed:(\d+\.\d+)[\r|\n|\ ]dir:(.*)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
-  sms_tk103BDir_4: /^lat:([-]?\d+\.\d+)[\r|\n|\ ]long:([-]?\d+\.\d+)[\r|\n]speed:(\d+\.\d+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ](https?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=[-]?\d+\.\d+,[-]?\d+\.\d+\&z=16)[\r|\n|\ ]PWR:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]Door:(\OFF|ON|off|on|Off|On)[\r|\n|\ ]ACC:(\OFF|ON|off|on|Off|On)/,
   sms_tk103_Alert_ACCON: /^(acc on!|Acc On)[\r|\n|\ ]Lac:(\w+) (\w+)[\r|\n|\ ]T:(\d{2}\/\d{2}\/\d{2}) (\d{2}:\d{2})[\r|\n|\ ]Last:[\r|\n|\ ]T:(\d{2}:\d{2})[\r|\n|\ ]http?\:\/\/?maps.google\.[a-z]+\/maps\?[f]\=q&q=([-]?\d+\.\d+),([-]?\d+\.\d+)\&z=16/,
 }
 
 const dateFormat = {
-  sms_tk103_Alert: 'yy/mm/dd',
-  sms_tk103_Alert_1: 'yy/mm/dd',
-  sms_tk103_Alert_dir: 'mm/dd/yy',
-  sms_tk103BDir: 'dd/mm/yy',
-  sms_tk103: 'yy/mm/dd',
-  sms_tk103_Oil: 'yy/mm/dd',
-  sms_tk103_LAC: 'yy/mm/dd',
-  sms_tk103_LAC1: 'yy/mm/dd',
-  sms_tk103_LAC2: 'mm/dd/yy',
-  sms_tk103_Oil_1: 'yy/mm/dd',
-  sms_tk103BDir_1: 'dd/mm/yy',
-  sms_tk103_LAC4: 'dd/mm/yy',
-  sms_tk103BDir_2: 'dd/mm/yy',
-  sms_tk103BDir_3: 'dd/mm/yy',
-  sms_tk103_Alert_ACCON: 'yy/mm/dd',
-  sms_tk103A: 'yy/mm/dd'
+  sms_tk103_Alert: "yy/mm/dd",
+  sms_tk103_Alert_1: "yy/mm/dd",
+  sms_tk103_Alert_dir: "mm/dd/yy",
+  sms_tk103BDir: "dd/mm/yy",
+  sms_tk103: "yy/mm/dd",
+  sms_tk103_Oil: "yy/mm/dd",
+  sms_tk103_LAC: "yy/mm/dd",
+  sms_tk103_LAC1: "yy/mm/dd",
+  sms_tk103_LAC2: "yy/mm/dd",
+  sms_tk103_Oil_1: "yy/mm/dd",
+  sms_tk103BDir_1: "dd/mm/yy",
+  sms_tk103_LAC4: "dd/mm/yy",
+  sms_tk103BDir_2: "dd/mm/yy",
+  sms_tk103BDir_3: "dd/mm/yy",
+  sms_tk103_Alert_ACCON: "yy/mm/dd"
 }
 
 const mapIndex = {
@@ -72,13 +69,13 @@ const mapIndex = {
     latitude: 1,
     longitude: 2,
     speed: 3,
-    date: 4,
-    time: 5,
-    power: 6,
-    door: 7,
-    acc: 8
+    date: 5,
+    time: 6,
+    power: 7,
+    door: 8,
+    acc: 9
   },
-  sms_tk103A_Oil: {
+    sms_tk103A_Oil: {
     latitude: 1,
     longitude: 2,
     speed: 3,
@@ -97,7 +94,8 @@ const mapIndex = {
     date: 5,
     time: 6,
     power: 7,
-    door: 8
+    door: 8,
+    acc: 9
   },
   sms_tk103BDir: {
     latitude: 1,
@@ -241,27 +239,6 @@ const mapIndex = {
     acc: 7,
     lastLatitude: 8,
     lastLongitude: 9,
-  },
-  sms_tk103_LAC5: {
-    lac: 1,
-    cid: 2,
-    date: 3,
-    time: 4,
-    lastTime: 5,
-    lastLatitude: 6,
-    lastLongitude: 7
-  },
-  sms_tk103BDir_4: {
-    latitude: 1,
-    longitude: 2,
-    speed: 3,
-    date: 4,
-    time: 5,
-    lastLatitude: 6,
-    lastLongitude: 7,
-    power: 8,
-    door: 9,
-    acc: 10
   }
 }
 
@@ -302,7 +279,7 @@ const parseAlarm = event => {
     }
 
   }
-  return event in alarms ? alarms[event] : undefined
+  return event in alarms ? alarms[event] : null
 }
 
 
