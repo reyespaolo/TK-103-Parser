@@ -58,8 +58,8 @@ const mapIndex = {
     lac: 2,
     cid: 3,
     time: 4,
-    lastlatitude: 5,
-    lastlongitude: 6
+    lastLatitude: 5,
+    lastLongitude: 6
   },
   sms_tk103_LAC3: {
     lac: 1,
