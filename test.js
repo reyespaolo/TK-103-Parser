@@ -27,6 +27,7 @@ const oil = new Buffer(`lat:7.152070\nlong:125.659558\nspeed:0.00\nT:18/03/09 18
 // tk103.parseTK103(err2)
 tk103.parseTK103(oil)
 
+
 // //
 // tk103.parseTK103(smsrawOilAlert)
 // tk103.parseTK103(smsrawSpeedingAlert)
