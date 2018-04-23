@@ -27,6 +27,7 @@ const getIndex = raw => {
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
       if (raw.protocol === key) {
+        console.log(config.mapIndex[key], key, raw.protocol)
         return config.mapIndex[key]
       }
     }
@@ -35,6 +36,7 @@ const getIndex = raw => {
 
 const parseTK103 = raw => {
   let parsedData = parse(raw)
+  console.log(parsedData)
   let jsonResult = {
     'alert': undefined,
     'latitude': undefined,
