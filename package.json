@@ -1,6 +1,6 @@
 {
   "name": "tk-103-parser",
-  "version": "1.0.28",
+  "version": "1.0.32",
   "description": "Parser for TK-103 GPS Devices",
   "main": "tk-103/",
   "scripts": {
