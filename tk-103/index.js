@@ -36,7 +36,7 @@ const getIndex = raw => {
 
 const parseTK103 = raw => {
   let parsedData = parse(raw)
-  console.log(parsedData)
+  // console.log(parsedData)
   let jsonResult = {
     'alert': undefined,
     'latitude': undefined,
