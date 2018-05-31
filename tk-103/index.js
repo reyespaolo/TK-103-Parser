@@ -27,7 +27,7 @@ const getIndex = raw => {
   for (var key in config.patterns) {
     if (config.patterns.hasOwnProperty(key)) {
       if (raw.protocol === key) {
-        console.log(config.mapIndex[key], key, raw.protocol)
+        // console.log(config.mapIndex[key], key, raw.protocol)
         return config.mapIndex[key]
       }
     }
